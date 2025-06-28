@@ -60,7 +60,7 @@ Haqdarshak_Scheme_Tool/
 
 1. **Clone this repo**
    ```bash
-   git clone https://github.com/your-username/Haqdarshak_Scheme_Tool.git
+   git clone https://github.com/Namanzz/Haqdarshak_Scheme_Tool.git
    cd Haqdarshak_Scheme_Tool
    ```
 
