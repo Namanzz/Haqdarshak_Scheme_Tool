@@ -1,0 +1,6 @@
+streamlit
+langchain
+sentence-transformers
+transformers
+accelerate
+faiss-cpu
