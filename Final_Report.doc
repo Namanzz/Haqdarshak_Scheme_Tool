@@ -1,0 +1,72 @@
+📘 Title: Automated Scheme Research Tool
+Candidate: Naman Anand
+Company: Haqdarshak
+Stack: Streamlit · LangChain · FAISS · HuggingFace · OpenAI · Python
+
+🧠 Objective
+The goal of this project is to automate the research and summarization of government scheme documents. Users can input URLs (PDFs), receive structured summaries, and ask natural language questions — all backed by vector search and language models.
+
+🧰 Tech Stack
+Frontend: Streamlit (Python Web UI)
+
+LLM: google/flan-t5-base (HuggingFace)
+
+Embeddings: sentence-transformers/all-MiniLM-L6-v2
+
+Vector DB: FAISS (local)
+
+PDF Parsing: PyMuPDF (via LangChain loader)
+
+QA Engine: LangChain RetrievalQA over FAISS
+
+📦 Directory Structure
+cpp
+Copy
+Edit
+Haqdarshak_Scheme_Tool/
+├── main.py
+├── requirements.txt
+├── faiss_store_openai.pkl (auto-generated)
+├── utils/
+│   ├── loader.py
+│   ├── qa_engine.py
+│   └── summarizer.py
+💡 How it Works
+User inputs a PDF URL of a government scheme
+
+PDF is downloaded and parsed using PyMuPDF
+
+Text is split, embedded locally using MiniLM
+
+Stored in FAISS index for fast similarity search
+
+Summary generated using flan-t5-base
+
+User can ask any question and get an answer from the document
+
+❗ Challenges I Faced
+OpenAI quota limits: My API key had insufficient quota, and upgrading required billing activation.
+
+OpenAI rate limits and latency: Embedding and chat response times were slow, and usage was costly.
+
+PDFs from government URLs: Could not be loaded directly with UnstructuredURLLoader; required temporary download and local parsing using PyMuPDF.
+
+Model size: Falcon 7B was too large for CPU — processing stalled for 15–20 minutes.
+
+Solution: I switched to flan-t5-base, which runs smoothly on CPU, uses less RAM, and is fast enough for real-time summarization and QA.
+
+🚀 Key Features
+User-friendly web interface (Streamlit)
+
+Input multiple URLs
+
+4-part structured summary (Benefits, Eligibility, Documents, Application Process)
+
+Ask any question in natural language
+
+Completely offline, free to run
+
+Summary and answers include source URLs
+
+🧪 Tested With
+PMSVANidhi Guidelines PDF
